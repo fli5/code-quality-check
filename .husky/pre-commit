@@ -1,2 +1,3 @@
 lint-staged
+echo 'Running test...'
 npm test
