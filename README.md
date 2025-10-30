@@ -331,14 +331,5 @@ CMD ["nginx", "-g", "daemon off;"]
 
 .prettierrc.json
 {
-"semi": true,
-"singleQuote": true,
-"tabWidth": 2,
-"trailingComma": "es5",
-"plugins": [
-"prettier-plugin-php",
-"prettier-plugin-ruby",
-"prettier-plugin-svelte",
-"prettier-plugin-tailwindcss"
-]
+
 }

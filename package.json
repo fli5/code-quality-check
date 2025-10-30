@@ -12,8 +12,9 @@
     "test": "jest",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "prettier-lint": "prettier --check .",
+    "prettier-format": "prettier --write .",
+    "prepare": "husky"
   },
   "author": "Felix Li",
   "license": "ISC",
@@ -54,11 +55,6 @@
   "dependencies": {
     "husky": "^9.1.7",
     "styled-components": "^6.1.19"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*": "prettier --write"
