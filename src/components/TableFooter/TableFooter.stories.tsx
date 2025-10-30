@@ -15,24 +15,24 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type { Meta, StoryObj } from "@storybook/react";
-import { TableFooter } from "./TableFooter";
-import { TableFooterProps } from "./TableFooter.types";
+import type { Meta, StoryObj } from '@storybook/react';
+import { TableFooter } from './TableFooter';
+import { TableFooterProps } from './TableFooter.types';
 
 const meta: Meta<TableFooterProps> = {
-    title: "Felix Library/TableFooter",
-    component: TableFooter,
-    parameters: { layout: "centered" },
-    tags: ["autodocs"],
-    argTypes: {
-        footer: { control: "object" },
-        backgroundColor: { control: "color" },
-        disabled: { control: "boolean" },
-    },
-    args: {
-        footer: ["Total", "2"],
-        disabled: false,
-    },
+  title: 'Felix Library/TableFooter',
+  component: TableFooter,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+  argTypes: {
+    footer: { control: 'object' },
+    backgroundColor: { control: 'color' },
+    disabled: { control: 'boolean' },
+  },
+  args: {
+    footer: ['Total', '2'],
+    disabled: false,
+  },
 };
 
 export default meta;

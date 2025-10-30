@@ -16,21 +16,21 @@
  * ---------------------------------------------------------------------
  */
 export interface CardProps {
-    /** Card title */
-    title: string;
+  /** Card title */
+  title: string;
 
-    /** Card content/body text */
-    content: string;
+  /** Card content/body text */
+  content: string;
 
-    /** Background color */
-    backgroundColor?: string;
+  /** Background color */
+  backgroundColor?: string;
 
-    /** Text color */
-    textColor?: string;
+  /** Text color */
+  textColor?: string;
 
-    /** Whether the card is disabled */
-    disabled?: boolean;
+  /** Whether the card is disabled */
+  disabled?: boolean;
 
-    /** Event when the card is clicked */
-    onClick?: () => void;
+  /** Event when the card is clicked */
+  onClick?: () => void;
 }

@@ -15,43 +15,49 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import styled from "styled-components";
-import { LabelProps } from "./Label.types";
+import React from 'react';
+import styled from 'styled-components';
+import { LabelProps } from './Label.types';
 
-const StyledLabel = styled.label< {color?:string,$backgroundColor?:string,fontSize?:string,disabled?:boolean}>`
-    display: inline-block;
-    color: ${(props) => (props.disabled ? "#aaa" : props.color || "#fff")};
-    background-color: ${(props) => (props.disabled ? "#cccccc" : props.$backgroundColor || "#000")};
-    font-size: ${(props) => props.fontSize || "16px"};
-    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-    transition: color 0.2s ease;
+const StyledLabel = styled.label<{
+  color?: string;
+  $backgroundColor?: string;
+  fontSize?: string;
+  disabled?: boolean;
+}>`
+  display: inline-block;
+  color: ${(props) => (props.disabled ? '#aaa' : props.color || '#fff')};
+  background-color: ${(props) =>
+    props.disabled ? '#cccccc' : props.$backgroundColor || '#000'};
+  font-size: ${(props) => props.fontSize || '16px'};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  transition: color 0.2s ease;
 
-    &:hover {
-        color: ${(props) => (!props.disabled ? "#007BFF" : "#aaa")};
-    }
+  &:hover {
+    color: ${(props) => (!props.disabled ? '#007BFF' : '#aaa')};
+  }
 `;
 
 export const Label: React.FC<LabelProps> = ({
-                                                text,
-    color,
-                                                backgroundColor,
-                                                fontSize,
-                                                disabled = false,
-                                                onClick,
-                                            }) => {
-    return (
-        <StyledLabel
-            $backgroundColor={backgroundColor}
-            color={color}
-            fontSize={fontSize}
-            disabled={disabled}
-            onClick={!disabled ? onClick : undefined}
-            role="label"
-        >
-            {text}
-        </StyledLabel>
-    );
+  text,
+  color,
+  backgroundColor,
+  fontSize,
+  disabled = false,
+  onClick,
+}) => {
+  return (
+    <StyledLabel
+      $backgroundColor={backgroundColor}
+      color={color}
+      fontSize={fontSize}
+      disabled={disabled}
+      onClick={!disabled ? onClick : undefined}
+      role="label"
+    >
+      {text}
+    </StyledLabel>
+  );
 };
 
 export default Label;

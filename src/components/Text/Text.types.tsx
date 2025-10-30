@@ -16,18 +16,18 @@
  * ---------------------------------------------------------------------
  */
 export interface TextProps {
-    /** The value inside the text box */
-    value: string;
+  /** The value inside the text box */
+  value: string;
 
-    /** Placeholder text */
-    placeholder?: string;
+  /** Placeholder text */
+  placeholder?: string;
 
-    /** Whether the input is disabled */
-    disabled?: boolean;
+  /** Whether the input is disabled */
+  disabled?: boolean;
 
-    /** Background color */
-    backgroundColor?: string;
+  /** Background color */
+  backgroundColor?: string;
 
-    /** Optional change event handler */
-    onChange?: (value: string) => void;
+  /** Optional change event handler */
+  onChange?: (value: string) => void;
 }

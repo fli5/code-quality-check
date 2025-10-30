@@ -16,8 +16,8 @@
  * ---------------------------------------------------------------------
  */
 export interface TableRowProps {
-    cells: string[];
-    disabled?: boolean;
-    backgroundColor?: string;
-    onClick?: () => void;
+  cells: string[];
+  disabled?: boolean;
+  backgroundColor?: string;
+  onClick?: () => void;
 }

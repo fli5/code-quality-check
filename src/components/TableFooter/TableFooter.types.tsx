@@ -16,7 +16,7 @@
  * ---------------------------------------------------------------------
  */
 export interface TableFooterProps {
-    footer: string[];
-    disabled?: boolean;
-    backgroundColor?: string;
+  footer: string[];
+  disabled?: boolean;
+  backgroundColor?: string;
 }

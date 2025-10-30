@@ -16,27 +16,24 @@
  * ---------------------------------------------------------------------
  */
 export interface TableProps {
-    /** Table headers as strings */
-    headers: string[];
+  /** Table headers as strings */
+  headers: string[];
 
-    /** Table rows as array of cells */
-    rows: string[][];
+  /** Table rows as array of cells */
+  rows: string[][];
 
-    /** Optional footer row */
-    footer?: string[];
+  /** Optional footer row */
+  footer?: string[];
 
+  /** Table caption */
+  caption?: string;
 
-    /** Table caption */
-    caption?: string;
+  /** Table background color */
+  backgroundColor?: string;
 
-    /** Table background color */
-    backgroundColor?: string;
+  /** Whether the table is disabled */
+  disabled?: boolean;
 
-    /** Whether the table is disabled */
-    disabled?: boolean;
-
-
-
-    /** Optional click event for table rows */
-    onRowClick?: (rowIndex: number) => void;
+  /** Optional click event for table rows */
+  onRowClick?: (rowIndex: number) => void;
 }

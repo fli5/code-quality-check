@@ -15,37 +15,54 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import styled from "styled-components";
-import {ButtonProps} from "./Button.types";
+import React from 'react';
+import styled from 'styled-components';
+import { ButtonProps } from './Button.types';
 
-
-const StyledButton = styled.button<{ $backgroundColor?: string; disabled?: boolean }>`
-    background-color: ${(props) => (props.disabled ? "#cccccc" : props.$backgroundColor || "#007bff")};
-    color: white;
-    border: none;
-    padding: 12px 16px;
-    font-size: 16px;
-    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-    border-radius: 15px;
-    transition: background-color 0.3s;
-    &:hover {
-        background-color: ${(props) =>
-                props.disabled ? "#cccccc" : props.$backgroundColor ? darkenColor(props.$backgroundColor) : "#0056b3"};
-    }
+const StyledButton = styled.button<{
+  $backgroundColor?: string;
+  disabled?: boolean;
+}>`
+  background-color: ${(props) =>
+    props.disabled ? '#cccccc' : props.$backgroundColor || '#007bff'};
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  border-radius: 15px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: ${(props) =>
+      props.disabled
+        ? '#cccccc'
+        : props.$backgroundColor
+          ? darkenColor(props.$backgroundColor)
+          : '#0056b3'};
+  }
 `;
 
 // Helper to darken color on hover
 function darkenColor(color: string) {
-    return color + "cc"; // add transparency as simple effect
+  return color + 'cc'; // add transparency as simple effect
 }
 
-export const Button: React.FC<ButtonProps> = ({text, backgroundColor, onClick, disabled}) => {
-    return (
-        <StyledButton $backgroundColor={backgroundColor} onClick={onClick} disabled={disabled} role="button">
-            {text}
-        </StyledButton>
-    );
+export const Button: React.FC<ButtonProps> = ({
+  text,
+  backgroundColor,
+  onClick,
+  disabled,
+}) => {
+  return (
+    <StyledButton
+      $backgroundColor={backgroundColor}
+      onClick={onClick}
+      disabled={disabled}
+      role="button"
+    >
+      {text}
+    </StyledButton>
+  );
 };
 
 export default Button;

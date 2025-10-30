@@ -15,22 +15,29 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { HeroImage } from "./HeroImage";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { HeroImage } from './HeroImage';
 
-describe("HeroImage Component", () => {
-    test("renders image with alt text, title, subtitle", () => {
-        render(<HeroImage src="hero.png" alt="Hero Image" title="Welcome" subtitle="Hello" />);
-        expect(screen.getByAltText("Hero Image")).toBeInTheDocument();
-        expect(screen.getByText("Welcome")).toBeVisible();
-        expect(screen.getByText("Hello")).toBeVisible();
-    });
+describe('HeroImage Component', () => {
+  test('renders image with alt text, title, subtitle', () => {
+    render(
+      <HeroImage
+        src="hero.png"
+        alt="Hero Image"
+        title="Welcome"
+        subtitle="Hello"
+      />
+    );
+    expect(screen.getByAltText('Hero Image')).toBeInTheDocument();
+    expect(screen.getByText('Welcome')).toBeVisible();
+    expect(screen.getByText('Hello')).toBeVisible();
+  });
 
-    test("applies grayscale when disabled", () => {
-        render(<HeroImage src="hero.png" alt="Disabled Hero" disabled />);
-        const heroImage_element = screen.getByRole("hero-image");
-        expect(heroImage_element).toHaveStyle("filter: grayscale(100%)");
-        expect(heroImage_element).toHaveStyle("cursor: not-allowed");
-    });
+  test('applies grayscale when disabled', () => {
+    render(<HeroImage src="hero.png" alt="Disabled Hero" disabled />);
+    const heroImage_element = screen.getByRole('hero-image');
+    expect(heroImage_element).toHaveStyle('filter: grayscale(100%)');
+    expect(heroImage_element).toHaveStyle('cursor: not-allowed');
+  });
 });

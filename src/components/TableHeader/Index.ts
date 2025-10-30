@@ -15,5 +15,5 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-export { default } from "./TableHeader";
-export * from "./TableHeader.types";
+export { default } from './TableHeader';
+export * from './TableHeader.types';

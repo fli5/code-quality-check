@@ -15,23 +15,22 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import {cleanup, render, screen} from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { Button } from "./Button";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Button } from './Button';
 
-describe("Button Component", () => {
+describe('Button Component', () => {
+  test('renders the button text', () => {
+    render(<Button text="Test Button" />);
+    const button_element = screen.getByText('Test Button');
+    expect(button_element).toBeInTheDocument();
+  });
 
-    test("renders the button text", () => {
-        render(<Button text="Test Button" />);
-        const button_element=screen.getByText("Test Button");
-        expect(button_element).toBeInTheDocument();
-    });
-
-    test("applies disabled styles", () => {
-        render(<Button text="Disabled" backgroundColor="#007bff" disabled />);
-        const button_element = screen.getByRole("button");
-        expect(button_element).toHaveStyle("background-color: #cccccc");
-        expect(button_element).toHaveStyle("cursor: not-allowed");
-    });
+  test('applies disabled styles', () => {
+    render(<Button text="Disabled" backgroundColor="#007bff" disabled />);
+    const button_element = screen.getByRole('button');
+    expect(button_element).toHaveStyle('background-color: #cccccc');
+    expect(button_element).toHaveStyle('cursor: not-allowed');
+  });
 });

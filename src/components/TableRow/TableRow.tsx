@@ -15,14 +15,16 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import styled from "styled-components";
-import { TableRowProps } from "./TableRow.types";
+import React from 'react';
+import styled from 'styled-components';
+import { TableRowProps } from './TableRow.types';
 
 const StyledTr = styled.tr<{ disabled?: boolean; $backgroundColor?: string }>`
-    background-color: ${({ $backgroundColor, disabled }) => (disabled ? "#f0f0f0" : $backgroundColor || "#1f9a1b")};
-    filter: ${({ disabled }) => (disabled ? "grayscale(100%)" : "none")};
-    cursor: ${({ disabled, onClick }) => (disabled || !onClick ? "not-allowed" : "pointer")};
+  background-color: ${({ $backgroundColor, disabled }) =>
+    disabled ? '#f0f0f0' : $backgroundColor || '#1f9a1b'};
+  filter: ${({ disabled }) => (disabled ? 'grayscale(100%)' : 'none')};
+  cursor: ${({ disabled, onClick }) =>
+    disabled || !onClick ? 'not-allowed' : 'pointer'};
 `;
 
 const StyledTd = styled.td`
@@ -30,13 +32,23 @@ const StyledTd = styled.td`
   padding: 8px;
 `;
 
-export const TableRow: React.FC<TableRowProps> = ({ cells, disabled, backgroundColor, onClick }) => {
-    return (
-        <StyledTr disabled={disabled} $backgroundColor={backgroundColor} onClick={!disabled ? onClick : undefined} role="table-row">
-            {cells.map((cell, idx) => (
-                <StyledTd key={idx}>{cell}</StyledTd>
-            ))}
-        </StyledTr>
-    );
+export const TableRow: React.FC<TableRowProps> = ({
+  cells,
+  disabled,
+  backgroundColor,
+  onClick,
+}) => {
+  return (
+    <StyledTr
+      disabled={disabled}
+      $backgroundColor={backgroundColor}
+      onClick={!disabled ? onClick : undefined}
+      role="table-row"
+    >
+      {cells.map((cell, idx) => (
+        <StyledTd key={idx}>{cell}</StyledTd>
+      ))}
+    </StyledTr>
+  );
 };
 export default TableRow;

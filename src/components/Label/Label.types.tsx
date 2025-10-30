@@ -16,17 +16,17 @@
  * ---------------------------------------------------------------------
  */
 export interface LabelProps {
-    /** The text content of the label */
-    text: string;
-    color?:string;
-    backgroundColor?: string;
+  /** The text content of the label */
+  text: string;
+  color?: string;
+  backgroundColor?: string;
 
-    /** The font size of the label */
-    fontSize?: string;
+  /** The font size of the label */
+  fontSize?: string;
 
-    /** Whether the label is disabled */
-    disabled?: boolean;
+  /** Whether the label is disabled */
+  disabled?: boolean;
 
-    /** Event when the label is clicked */
-    onClick?: () => void;
+  /** Event when the label is clicked */
+  onClick?: () => void;
 }

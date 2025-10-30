@@ -15,56 +15,61 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type {Meta, StoryObj} from "@storybook/react";
-import {RadioButton} from "./RadioButton";
-import {RadioButtonProps} from "./RadioButton.types";
-import {fn, userEvent, within} from "storybook/test";
-import {useArgs} from "storybook/preview-api";
+import type { Meta, StoryObj } from '@storybook/react';
+import { RadioButton } from './RadioButton';
+import { RadioButtonProps } from './RadioButton.types';
+import { userEvent, within } from 'storybook/test';
 
 const meta: Meta<RadioButtonProps> = {
-    title: "Felix Library/RadioButton",
-    component: RadioButton,
-    parameters: {
-        layout: 'centered',
+  title: 'Felix Library/RadioButton',
+  component: RadioButton,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    label: {
+      control: 'text',
+      description: 'The text to display inside the radio button',
     },
-    tags: ['autodocs'],
-    argTypes: {
-        label: {control: "text", description: "The text to display inside the radio button"},
-        checked: {control: "boolean"},
-        disabled: {control: "boolean", description: 'Disables the button when true'},
-        onChange: {action: "change"},
+    checked: { control: 'boolean' },
+    disabled: {
+      control: 'boolean',
+      description: 'Disables the button when true',
     },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-        const button = await canvas.getByRole('radio_button');
-        await userEvent.click(button);
-        console.log('RadioButton clicked!');
-    },
+    onChange: { action: 'change' },
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = await canvas.getByRole('radio_button');
+    await userEvent.click(button);
+    console.warn('RadioButton clicked!');
+  },
 };
 
 export default meta;
 type Story = StoryObj<RadioButtonProps>;
 
 export const Default: Story = {
-    args: {
-        label: "Option 1",
-        checked: false,
-        disabled: false,
-    },
+  args: {
+    label: 'Option 1',
+    checked: false,
+    disabled: false,
+  },
 };
 
 export const Checked: Story = {
-    args: {
-        label: "Option 2",
-        checked: true,
-        disabled: false,
-    },
+  args: {
+    label: 'Option 2',
+    checked: true,
+    disabled: false,
+  },
 };
 
 export const Disabled: Story = {
-    args: {
-        label: "Option 3",
-        checked: false,
-        disabled: true,
-    },
+  args: {
+    label: 'Option 3',
+    checked: false,
+    disabled: true,
+  },
 };

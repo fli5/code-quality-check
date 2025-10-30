@@ -15,5 +15,5 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-export { default } from "./Table";
-export * from "./Table.types";
+export { default } from './Table';
+export * from './Table.types';

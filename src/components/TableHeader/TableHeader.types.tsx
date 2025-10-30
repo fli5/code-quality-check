@@ -16,7 +16,7 @@
  * ---------------------------------------------------------------------
  */
 export interface TableHeaderProps {
-    headers: string[];
-    disabled?: boolean;
-    backgroundColor?: string;
+  headers: string[];
+  disabled?: boolean;
+  backgroundColor?: string;
 }

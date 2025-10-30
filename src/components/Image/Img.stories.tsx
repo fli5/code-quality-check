@@ -15,40 +15,43 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type { Meta, StoryObj } from "@storybook/react";
-import { Img } from "./Img";
-import { ImgProps } from "./Img.types";
-// @ts-ignore
-import sampleLogo from "../../assets/images/logo-sample.png";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Img } from './Img';
+import { ImgProps } from './Img.types';
+import sampleLogo from '../../assets/images/logo-sample.png';
 
 const meta: Meta<ImgProps> = {
-    title: "Felix Library/Img",
-    component: Img,
-    parameters: { layout: "centered" },
-    tags: ["autodocs"],
-    argTypes: {
-        src: { control: "text", description: "Image source URL" },
-        alt: { control: "text", description: "Alt text for the image" },
-        width: { control: "text", description: "Width of the image" },
-        height: { control: "text", description: "Height of the image" },
-        backgroundColor: { control: "color", description: "Background color behind the image" },
-        disabled: { control: "boolean", description: "Disable the image (greyed out)" },
-        onClick: { action: "clicked" },
+  title: 'Felix Library/Img',
+  component: Img,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+  argTypes: {
+    src: { control: 'text', description: 'Image source URL' },
+    alt: { control: 'text', description: 'Alt text for the image' },
+    width: { control: 'text', description: 'Width of the image' },
+    height: { control: 'text', description: 'Height of the image' },
+    backgroundColor: {
+      control: 'color',
+      description: 'Background color behind the image',
     },
-    args: {
-        src:sampleLogo,
-        alt: "Placeholder Image",
-        width: "150px",
-        height: "150px",
-        backgroundColor: "#ffffff",
-        disabled: false,
+    disabled: {
+      control: 'boolean',
+      description: 'Disable the image (greyed out)',
     },
+    onClick: { action: 'clicked' },
+  },
+  args: {
+    src: sampleLogo,
+    alt: 'Placeholder Image',
+    width: '150px',
+    height: '150px',
+    backgroundColor: '#ffffff',
+    disabled: false,
+  },
 };
 
 export default meta;
 type Story = StoryObj<ImgProps>;
 
-export const Default: Story = {
-
-};
+export const Default: Story = {};
 export const Disabled: Story = { args: { disabled: true } };

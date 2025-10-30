@@ -15,23 +15,22 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { Img } from "./Img";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { Img } from './Img';
 
-describe("Img Component", () => {
-    test("renders image with alt text", () => {
-        render(<Img src="test.png" alt="Test Image" />);
-        const image_element=screen.getByAltText("Test Image");
-        expect(image_element).toBeInTheDocument();
-        expect(image_element).toBeVisible();
-    });
+describe('Img Component', () => {
+  test('renders image with alt text', () => {
+    render(<Img src="test.png" alt="Test Image" />);
+    const image_element = screen.getByAltText('Test Image');
+    expect(image_element).toBeInTheDocument();
+    expect(image_element).toBeVisible();
+  });
 
-    test("applies background when disabled", () => {
-        render(<Img src="test.png" alt="Disabled Image" disabled />);
-        const image_element = screen.getByRole("image");
-        expect(image_element).toHaveStyle("background-color:#f0f0f0");
-        expect(image_element).toHaveStyle("cursor:not-allowed");
-    });
-
+  test('applies background when disabled', () => {
+    render(<Img src="test.png" alt="Disabled Image" disabled />);
+    const image_element = screen.getByRole('image');
+    expect(image_element).toHaveStyle('background-color:#f0f0f0');
+    expect(image_element).toHaveStyle('cursor:not-allowed');
+  });
 });

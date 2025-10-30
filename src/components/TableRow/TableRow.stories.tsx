@@ -15,30 +15,29 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type {Meta, StoryObj} from "@storybook/react";
-import {TableRow} from "./TableRow";
-import {TableRowProps} from "./TableRow.types";
-import {userEvent, within} from "storybook/test";
+import type { Meta, StoryObj } from '@storybook/react';
+import { TableRow } from './TableRow';
+import { TableRowProps } from './TableRow.types';
 
 const meta: Meta<TableRowProps> = {
-    title: "Felix Library/TableRow",
-    component: TableRow,
-    parameters: {layout: "centered"},
-    tags: ["autodocs"],
-    argTypes: {
-        cells: {control: "object"},
-        backgroundColor: {control: "color"},
-        disabled: {control: "boolean"},
-        onClick: {action: "row clicked"},
-    },
-    args: {
-        cells: ["Alice", "25"],
-        disabled: false,
-    },
+  title: 'Felix Library/TableRow',
+  component: TableRow,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+  argTypes: {
+    cells: { control: 'object' },
+    backgroundColor: { control: 'color' },
+    disabled: { control: 'boolean' },
+    onClick: { action: 'row clicked' },
+  },
+  args: {
+    cells: ['Alice', '25'],
+    disabled: false,
+  },
 };
 
 export default meta;
 type Story = StoryObj<TableRowProps>;
 
 export const Default: Story = {};
-export const Disabled: Story = {args: {disabled: true}};
+export const Disabled: Story = { args: { disabled: true } };

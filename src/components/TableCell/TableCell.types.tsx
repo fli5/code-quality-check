@@ -15,15 +15,15 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
+import React from 'react';
 
 export interface TableCellProps {
-    /** Cell content */
-    children: React.ReactNode;
+  /** Cell content */
+  children: React.ReactNode;
 
-    /** Whether the cell is disabled */
-    disabled?: boolean;
+  /** Whether the cell is disabled */
+  disabled?: boolean;
 
-    /** Optional background color */
-    backgroundColor?: string;
+  /** Optional background color */
+  backgroundColor?: string;
 }

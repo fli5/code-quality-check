@@ -15,34 +15,34 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type { Meta, StoryObj } from "@storybook/react";
-import { Table } from "./Table";
-import { TableProps } from "./Table.types";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Table } from './Table';
+import { TableProps } from './Table.types';
 
 const meta: Meta<TableProps> = {
-    title: "Felix Library/Table",
-    component: Table,
-    parameters: { layout: "centered" },
-    tags: ["autodocs"],
-    argTypes: {
-        caption: { control: "text" },
-        headers: { control: "object" },
-        rows: { control: "object" },
-        footer: { control: "object" },
-        backgroundColor: { control: "color" },
-        disabled: { control: "boolean" },
-        onRowClick: { action: "row clicked" },
-    },
-    args: {
-        caption: "Sample Table",
-        headers: ["Name", "Age"],
-        rows: [
-            ["Alice", "25"],
-            ["Bob", "30"]
-        ],
-        footer: ["Total", "2"],
-        disabled: false,
-    },
+  title: 'Felix Library/Table',
+  component: Table,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
+  argTypes: {
+    caption: { control: 'text' },
+    headers: { control: 'object' },
+    rows: { control: 'object' },
+    footer: { control: 'object' },
+    backgroundColor: { control: 'color' },
+    disabled: { control: 'boolean' },
+    onRowClick: { action: 'row clicked' },
+  },
+  args: {
+    caption: 'Sample Table',
+    headers: ['Name', 'Age'],
+    rows: [
+      ['Alice', '25'],
+      ['Bob', '30'],
+    ],
+    footer: ['Total', '2'],
+    disabled: false,
+  },
 };
 
 export default meta;

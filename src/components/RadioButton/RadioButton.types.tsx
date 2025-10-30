@@ -16,15 +16,15 @@
  * ---------------------------------------------------------------------
  */
 export interface RadioButtonProps {
-    /** The label displayed next to the radio button */
-    label: string;
+  /** The label displayed next to the radio button */
+  label: string;
 
-    /** Whether the radio button is selected */
-    checked?: boolean;
+  /** Whether the radio button is selected */
+  checked?: boolean;
 
-    /** Whether the radio button is disabled */
-    disabled?: boolean;
+  /** Whether the radio button is disabled */
+  disabled?: boolean;
 
-    /** Callback when the radio button is changed */
-    onChange?: (checked: boolean) => void;
+  /** Callback when the radio button is changed */
+  onChange?: (checked: boolean) => void;
 }

@@ -4,11 +4,7 @@
     //Specifies that the TypeScript compiler will generate code compatible with ECMAScript 5
     "target": "es5",
     //Includes necessary libraries, such as the Document Object Model (DOM)
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     //Skips type checking of declaration files (.d.ts), speeding up compilation
     "skipLibCheck": true,
@@ -27,7 +23,5 @@
     "jsx": "react-jsx"
   },
   //Specifies that TypeScript should include files from the src directory
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

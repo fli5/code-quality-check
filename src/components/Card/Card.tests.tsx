@@ -15,23 +15,29 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { Card } from "./Card";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { Card } from './Card';
 
-describe("Card Component", () => {
-    test("renders title and content", () => {
-        render(<Card title="Card Title" content="Card content" />);
-        const card_element = screen.getByText("Card Title");
-        expect(card_element).toBeInTheDocument();
-        expect(card_element).toBeVisible();
-    });
+describe('Card Component', () => {
+  test('renders title and content', () => {
+    render(<Card title="Card Title" content="Card content" />);
+    const card_element = screen.getByText('Card Title');
+    expect(card_element).toBeInTheDocument();
+    expect(card_element).toBeVisible();
+  });
 
-    test("applies background when disabled", () => {
-        render(<Card title="Disabled" content="Content" backgroundColor="#fff" disabled />);
-        const card_element = screen.getByRole("card");
-        expect(card_element).toHaveStyle("background-color: #f0f0f0");
-        expect(card_element).toHaveStyle("cursor:not-allowed");
-    });
-
+  test('applies background when disabled', () => {
+    render(
+      <Card
+        title="Disabled"
+        content="Content"
+        backgroundColor="#fff"
+        disabled
+      />
+    );
+    const card_element = screen.getByRole('card');
+    expect(card_element).toHaveStyle('background-color: #f0f0f0');
+    expect(card_element).toHaveStyle('cursor:not-allowed');
+  });
 });

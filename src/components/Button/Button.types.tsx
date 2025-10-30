@@ -16,16 +16,15 @@
  * ---------------------------------------------------------------------
  */
 export interface ButtonProps {
-    /** Button text */
-    text: string;
+  /** Button text */
+  text: string;
 
-    /** Background color */
-    backgroundColor?: string;
+  /** Background color */
+  backgroundColor?: string;
 
-    /** Optional click handler */
-    onClick?: () => void;
+  /** Optional click handler */
+  onClick?: () => void;
 
-    /** Disabled state */
-    disabled?: boolean;
-
+  /** Disabled state */
+  disabled?: boolean;
 }

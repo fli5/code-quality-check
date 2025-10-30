@@ -15,26 +15,26 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import type { Meta, StoryObj } from "@storybook/react";
-import { TableHeader } from "./TableHeader";
-import { TableHeaderProps } from "./TableHeader.types";
+import type { Meta, StoryObj } from '@storybook/react';
+import { TableHeader } from './TableHeader';
+import { TableHeaderProps } from './TableHeader.types';
 
 const meta: Meta<TableHeaderProps> = {
-    title: "Felix Library/TableHeader",
-    component: TableHeader,
-    parameters: {
-        layout: "centered",
-    },
-    tags: ["autodocs"],
-    argTypes: {
-        headers: { control: "object" },
-        backgroundColor: { control: "color" },
-        disabled: { control: "boolean" },
-    },
-    args: {
-        headers: ["Name", "Age"],
-        disabled: false,
-    },
+  title: 'Felix Library/TableHeader',
+  component: TableHeader,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    headers: { control: 'object' },
+    backgroundColor: { control: 'color' },
+    disabled: { control: 'boolean' },
+  },
+  args: {
+    headers: ['Name', 'Age'],
+    disabled: false,
+  },
 };
 
 export default meta;

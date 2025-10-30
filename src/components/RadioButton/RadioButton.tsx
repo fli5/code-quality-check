@@ -15,45 +15,44 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import styled from "styled-components";
-import {RadioButtonProps} from "./RadioButton.types";
+import React from 'react';
+import styled from 'styled-components';
+import { RadioButtonProps } from './RadioButton.types';
 
 const Wrapper = styled.label<{ disabled?: boolean }>`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
-    opacity: ${(props) => (props.disabled ? 0.5 : 1)};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `;
 
 const Input = styled.input`
-    cursor: inherit;
+  cursor: inherit;
 `;
 
 export const RadioButton: React.FC<RadioButtonProps> = ({
-                                                            label,
-                                                            checked = false,
-                                                            disabled = false,
-                                                            onChange
-                                                        }) => {
-    const handleChange = () => {
-        if (!disabled && onChange) {
-            checked = !checked;
-            onChange(checked);
-        }
-    };
+  label,
+  checked = false,
+  disabled = false,
+  onChange,
+}) => {
+  const handleChange = () => {
+    if (!disabled && onChange) {
+      onChange(!checked);
+    }
+  };
 
-    return (
-        <Wrapper disabled={disabled} role="radio_button">
-            <Input
-                type="radio"
-                checked={checked}
-                disabled={disabled}
-                onChange={handleChange}
-            />
-            {label}
-        </Wrapper>
-    );
+  return (
+    <Wrapper disabled={disabled} role="radio_button">
+      <Input
+        type="radio"
+        checked={checked}
+        disabled={disabled}
+        onChange={handleChange}
+      />
+      {label}
+    </Wrapper>
+  );
 };
 export default RadioButton;

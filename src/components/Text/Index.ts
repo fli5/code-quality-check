@@ -15,5 +15,5 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-export { default } from "./Text";
-export * from "./Text.types";
+export { default } from './Text';
+export * from './Text.types';

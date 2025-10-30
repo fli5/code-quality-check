@@ -15,24 +15,23 @@
  * Created: 2025-10-09
  * ---------------------------------------------------------------------
  */
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { Text } from "./Text";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { Text } from './Text';
 
-describe("Text Component", () => {
-    test("renders a Text", () => {
-        render(<Text value="Hello" />);
-        const text_element = screen.getByDisplayValue("Hello");
-        expect(text_element).toBeInTheDocument();
-        expect(text_element).toBeVisible();
-    });
+describe('Text Component', () => {
+  test('renders a Text', () => {
+    render(<Text value="Hello" />);
+    const text_element = screen.getByDisplayValue('Hello');
+    expect(text_element).toBeInTheDocument();
+    expect(text_element).toBeVisible();
+  });
 
-
-    test("applies disabled background color", () => {
-        render(<Text value="Disabled" disabled backgroundColor="#ffffff" />);
-        const text_element = screen.getByDisplayValue("Disabled");
-        expect(text_element).toHaveStyle("background-color: #f0f0f0");
-        expect(text_element).toHaveStyle("cursor: not-allowed");
-    });
+  test('applies disabled background color', () => {
+    render(<Text value="Disabled" disabled backgroundColor="#ffffff" />);
+    const text_element = screen.getByDisplayValue('Disabled');
+    expect(text_element).toHaveStyle('background-color: #f0f0f0');
+    expect(text_element).toHaveStyle('cursor: not-allowed');
+  });
 });
