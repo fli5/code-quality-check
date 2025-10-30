@@ -1,4 +1,7 @@
 {
-  "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-  "*.{json,css,scss,md}": ["eslint --fix", "prettier --write"]
+  "*.{js,jsx,ts,tsx}": ["echo 'Running ESLint fix...'", "eslint --fix"],
+  "*.{json,css,scss,md,js,jsx,ts,tsx}": [
+    "echo 'Formatting with Prettier...'",
+    "prettier --write"
+  ]
 }

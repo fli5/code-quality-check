@@ -14,7 +14,7 @@
     "build-storybook": "storybook build",
     "prettier-lint": "prettier --check .",
     "prettier-format": "prettier --write .",
-    "prepare": "husky",
+    "prepare": "husky install",
     "eslint-lint": "eslint .",
     "eslint-lint:fix": "eslint --fix . && prettier --write ."
   },
