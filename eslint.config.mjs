@@ -90,7 +90,7 @@ export default tseslint.config(
     },
   },
 
-  // Jest/测试文件配置
+  // Jest file configuration
   {
     files: ['**/*.test.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -100,6 +100,6 @@ export default tseslint.config(
     },
   },
 
-  // Prettier 集成（关闭与 Prettier 冲突的规则）
+  // Prettier integration (turn off rules that conflict with Prettier)
   prettierConfig
 );

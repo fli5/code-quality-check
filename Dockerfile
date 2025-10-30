@@ -2,7 +2,7 @@
 FROM node:20-alpine AS building
 
 # Set up the workdir
-WORKDIR /feng_li_ui_garden
+WORKDIR /feng_li_ui_garden_build_checks
 
 # Copy the package.json to install all necessary dependencies
 COPY package.json ./
@@ -13,19 +13,22 @@ RUN npm install
 # Copy all source code to prepare for building artifact
 COPY . .
 
+RUN npm run eslint-lint:fix
+RUN npm run prettier-lint
+RUN npm test
 # Execute build command
 RUN npm run build-storybook
 
 # Stage 2 - Deploy the StoryBook
 FROM nginx:alpine AS production
 
-WORKDIR /feng_li_ui_garden
+WORKDIR /feng_li_ui_garden_build_checks
 
 # Clean up all files under the html direcotry
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built Storybook static files
-COPY --from=building /feng_li_ui_garden/storybook-static /usr/share/nginx/html
+COPY --from=building /feng_li_ui_garden_build_checks/storybook-static /usr/share/nginx/html
 
 # Expose the default port of Nginx for the Container
 EXPOSE 80

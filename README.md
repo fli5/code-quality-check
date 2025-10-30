@@ -1,331 +1,228 @@
-# Create a StoryBook for React Library
+# Do Quality Assurance Task for UI Library
 
 - storybook/react-webpack5: ^9.1.10
 - jest: ^30.2.0
 - react: ^18.3.1
 - react-dom: ^18.3.1
 - typescript: ^5.9.3
+- eslint: ^9.38.0
+- husky: ^9.1.7
+- prettier: ^3.6.2
 
-## 1. Initialize a package.json
+---
 
-## `npm init`
+## Install and set up the Husky
 
-## 2. Install the dependencies for React and TypeScript
+### 1. Install the Husky
 
 ```bash
-    npm i react typescript @types/react tslib --save-dev
+    npm install husky --save-dev
 ```
 
-### Set up Dependency management
+### 2. Initialize the Husky
 
-```json
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+Create a .husky directory at the root with a pre-commit hook file
+
+```bash
+    npx husky init
+```
+
+### 3. Add a prepare script for automatic init husky
+
+Automatically called when executing the `npm install`
+
+```
+"scripts": {
+    "prepare": "husky install",
+}
+```
+
+---
+
+## Install and set up the ESLint
+
+### 1. Install the ESLint
+
+```bash
+    npm install eslint --save-dev
+```
+
+### 2. Configure the ESlint (eslint.config.mjs)
+
+```bash
+    npm init @eslint/config
+```
+
+### 3. Add the scripts in the package.json
+
+```
+  "scripts": {
+    "eslint-lint": "eslint .",
+    "eslint-lint:fix": "eslint --fix"
   }
 ```
 
-- `peerDependencies`: The dependencies provided by the user of the library
-- `devDependencies`: The dependencies you need for development and test
-- `dependencies`: The dependencies provided by the developer of the library
-
 ---
 
-## 3. Create a tsconfig.json to configure the TypeScript
+## Install and set up the Prettier
+
+### 1. Install the Prettier
 
 ```bash
-    npx tsc -init
+    npm install prettier --save-dev
 ```
 
-### Config the tsconfig.json
+### 2. Add Prettier Configuration file (.prettierrc.json)
 
-```json
+```
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": ["src"]
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "plugins": []
 }
 ```
 
----
+### 3. Add the Prettier ignore file to exclude files from being formatted
 
-## 4. Create the project skeleton
+(.prettierignore), for example:
 
-- `Button.tests.tsx`: Verify the Button component works as expected in different scenarios.
-- `Button.tsx`: Define the Button component’s structure, behavior, and appearance.
-- `Button.types`.tsx: Define TypeScript interfaces or types for the Button component.
-- `Index.ts`: Provide a single entry point for importing the Button component and its types.
-- `Button.stories.tsx`: Provide visual examples of the Button for development and documentation.
-
----
-
-## 5. Install the Rollup plugin to bundle and package libraries
-
-```bash
-    npm install rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-typescript rollup-plugin-peer-deps-external @rollup/plugin-terser rollup-plugin-dts --save-dev
+```
+node_modules
 ```
 
-### Customize a rollup.config.js
+### 4. Add the scripts in the package.json
 
-```javascript
-export default [
-  {
-    input: 'src/Index.ts',
-    output: [
-      //creating separate files specified by the main and module entries in the package.json
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
-      terser(),
-    ],
-    external: ['react', 'react-dom'],
-  },
-  {
-    input: 'src/Index.ts',
-    output: [{ file: 'dist/types.d.ts', format: 'es' }],
-    //generates a type declaration file (types.d.ts) using the dts plugin
-    plugins: [dts.default()],
-  },
-];
 ```
-
-### Set up the package.json for Rollup
-
-```json
- "main": "dist/cjs/index.js",
- "module": "dist/esm/index.js",
- "types": "dist/index.d.ts",
-
- "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs",
- }
-```
-
-- `main`: "dist/cjs/index.js": Specifies the CommonJS entry point
-- `module`: "dist/esm/index.js": Indicates the ECMAScript Module entry point
-- `types`: "dist/index.d.ts": Points to the TypeScript type declaration file
-- `scripts`: {"rollup": "rollup -c --bundleConfigAsCjs", ...}: Defines a script command
-
----
-
-### Adding CSS support in Rollup
-
-```bash
-    npm install rollup-plugin-postcss --save-dev
-```
-
-### Build the Library
-
-```bash
-  npm run rollup
-```
-
----
-
-## 6. Install the styled-components library
-
-```bash
-  npm install react@18.3.1 react-dom@18.3.1
-```
-
-```bash
-  npm install styled-components
-```
-
----
-
-## 7. Add Jest and React Testing Library
-
-```bash
-  npm install @testing-library/react jest @types/jest jest-environment-jsdom --save-dev
-```
-
-Install Babel and related plugins to handle JSX transformations for Jest
-
-```bash
-  npm install @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript babel-jest --save-dev
-```
-
-Install identity-obj-proxy to allow Jest to treat all types of imports (CSS, LESS, and SCSS) as generic objects
-
-```bash
-  npm install identity-obj-proxy -save-dev
-```
-
-### Set up setupTests.ts
-
-```typescript
-// runs before every test
-beforeEach(() => {
-  console.log('Setting up test environment');
-  jest.clearAllMocks();
-});
-
-// runs after each test
-afterEach(() => {
-  console.log('Cleaning up after each test');
-  cleanup();
-  jest.clearAllMocks();
-});
-
-// runs once before all tests
-beforeAll(() => {
-  console.log('Initialize test environment before all tests');
-});
-
-// runs once after all tests
-afterAll(() => {
-  console.log('Cleaning up after all tests');
-});
-```
-
-### Set up jest.config.js
-
-```javascript
-module.exports = {
-  testEnvironment: 'jsdom',
-  testMatch: [
-    '**/__tests__/**/*.+(ts|tsx|js)',
-    // Add files ending with .tests.tsx|ts|js
-    '**/?(*.)+(spec|tests|test).+(ts|tsx|js)',
-  ],
-  moduleNameMapper: {
-    '.(css|less|scss)$': 'identity-obj-proxy',
-  },
-  setupFilesAfterEnv: ['./src/setupTests.ts'],
-};
-```
-
-### Set up babel.config.js
-
-```javascript
-module.exports = {
-  presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
-    '@babel/preset-typescript',
-  ],
-};
-```
-
-### Set up package.json
-
-```json
 "scripts": {
-   "test": "jest",
+    "prettier-lint": "prettier --check .",
+    "prettier-format": "prettier --write .",
 }
 ```
 
-### Run tests
+---
 
-- Run all tests
-  `npm run test`
+## Install and set up the lint-staged
 
-- Run only tests for the `Button component`
-  `npm test -- Button`
+Lint-staged is a tool to check only the files you have modified before committing
 
-- Run only changed files since `last commit`
+### 1. Install the lint-staged
 
 ```bash
-  npx jest --onlyChanged
+    npm install lint-staged --save-dev
 ```
 
-- Run only the specific test file
+### 2. Configure the lint-staged (.lintstagedrc.json)
 
-```bash
-  npx jest src/components/Button/Button.tests.tsx
 ```
-
-- Run only tests with name containing `"disabled"`
-
-```bash
-  npx jest -t "disabled"
-```
-
-- Watch the test changes and run all tests
-
-```bash
-  npx jest --watch
-```
-
-- Run all tests and create coverage reports.
-
-```bash
-  npx jest --coverage
-```
-
-```text
-This creates a /coverage folder with a full HTML report:
-• Statements – how many lines of code are executed
-• Branches – how many if/else paths are tested
-• Functions – how many functions are called
-• Lines – total code lines covered
+{
+  "*.{js,jsx,ts,tsx}": ["eslint --fix"],
+  "*.{json,css,scss,md,js,jsx,ts,tsx}": ["prettier --write"]
+}
 ```
 
 ---
 
-## 8. Setting up Storybook
+## Configure Husky Hooks
 
-```bash
-    npx sb init --builder webpack5
+Add lint-staged and npm test to `pre-commit` file for code checking and testing
+
 ```
-
-### Build StoryBook
-
-Static the StoryBook
-
-```bash
-    npm run build-storybook
-```
-
-### Run StoryBook
-
-storybook dev -p 6006
-
-```bash
-  npm run storybook
+echo '>>Run ESLint Check and Prettier Check...\n'
+lint-staged --verbose
+echo '>>>Run testing... \n'
+npm test
 ```
 
 ---
 
-## 9. Containerized Deployment
+## Set up GitHub Workflows
 
-### Create a Dockerfile
+### 1. Add ci.yml into .github/workflows folders
+
+```yaml
+name: CI/CD Pipeline
+
+# when to execute this workflow
+on:
+  pull_request:
+  push:
+    branches: [main]
+# the job list included in the workflow
+jobs:
+  check-task:
+    name: Lint & Format
+    # OS that runs on
+    runs-on: ubuntu-latest
+
+    # Which node version should be covered
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # named a step
+      - name: Set up Node.js ${{ matrix.node-version }}
+        # use existing action in GitHub
+        uses: actions/setup-node@v3
+        # Pass some parameter
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        # Execute a command present in the Env
+        run: npm ci
+
+      - name: Run ESLint check
+        run: npm run eslint-lint:fix
+
+      - name: Run Prettier Check
+        run: npm run prettier-format
+
+  test-task:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --coverage
+```
+
+### 2. Commit the yaml to GitHub
+
+---
+
+## Containerized Deployment
+
+### 1. Create a Dockerfile
 
 ```dockerfile
 # Stage 1 - Build the StoryBook
 FROM node:20-alpine AS building
 
 # Set up the workdir
-WORKDIR /feng_li_ui_garden
+WORKDIR /feng_li_ui_garden_build_checks
 
 # Copy the package.json to install all necessary dependencies
 COPY package.json ./
@@ -336,19 +233,22 @@ RUN npm install
 # Copy all source code to prepare for building artifact
 COPY . .
 
+RUN npm run eslint-lint:fix
+RUN npm run prettier-lint
+RUN npm test
 # Execute build command
 RUN npm run build-storybook
 
 # Stage 2 - Deploy the StoryBook
 FROM nginx:alpine AS production
 
-WORKDIR /feng_li_ui_garden
+WORKDIR /feng_li_ui_garden_build_checks
 
 # Clean up all files under the html direcotry
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the built Storybook static files
-COPY --from=building /feng_li_ui_garden/storybook-static /usr/share/nginx/html
+COPY --from=building /feng_li_ui_garden_build_checks/storybook-static /usr/share/nginx/html
 
 # Expose the default port of Nginx for the Container
 EXPOSE 80
@@ -361,37 +261,37 @@ CMD ["nginx", "-g", "daemon off;"]
 ### Remove Docker Container
 
 ```bash
-  docker rm feng_li_coding_assignment12
+  docker rm feng_li_coding_assignment13
 ```
 
 ### Remove Docker Image
 
 ```bash
-  docker image rm feng_li_coding_assignment12
+  docker image rm feng_li_coding_assignment13
 ```
 
 ### Build Docker Image
 
 ```bash
-  docker build -t feng_li_coding_assignment12 .
+  docker build -t feng_li_coding_assignment13 .
 ```
 
 ### Run Docker Container
 
 ```bash
-  docker run -d -p 8083:80 --name feng_li_coding_assignment12 feng_li_coding_assignment12
+  docker run -d -p 8081:80 --name feng_li_coding_assignment13 feng_li_coding_assignment13
 ```
 
 ### Stop Docker Continaer
 
 ```bash
-  docker stop feng_li_coding_assignment12
+  docker stop feng_li_coding_assignment13
 ```
 
 ### Start Docker Continaer
 
 ```bash
-  docker start feng_li_coding_assignment12
+  docker start feng_li_coding_assignment13
 ```
 
-## 10. http://localhost:8083
+## 10. http://localhost:8081

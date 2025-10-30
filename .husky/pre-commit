@@ -1,4 +1,4 @@
-echo 'Run code style checks and formatting with ESLint and Prettier...'
+echo '>>Run ESLint Check and Prettier Check...\n'
 lint-staged --verbose
-echo 'Run testing... '
+echo '>>>Run testing... \n'
 npm test
